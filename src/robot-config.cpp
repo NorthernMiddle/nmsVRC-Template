@@ -17,6 +17,7 @@ brain  Brain;
 // sensors
 inertial DrivetrainInertial = inertial(PORT15);
 rotation RotationSensor = rotation(PORT18, true);
+optical OpticalSensor01 = optical(PORT17);
 
 // motors
 motor lfMotor = motor(PORT1, ratio6_1, false);
