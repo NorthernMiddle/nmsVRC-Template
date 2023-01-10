@@ -11,6 +11,7 @@ extern brain Brain;
 // sensors
 extern inertial DrivetrainInertial;
 extern rotation RotationSensor;
+extern optical OpticalSensor1;
 
 // motors
 extern motor lfMotor;
