@@ -15,7 +15,8 @@ brain  Brain;
 ////////////////////////////////////////////////////
 
 // sensors
-
+inertial DrivetrainInertial = inertial(PORT15);
+rotation RotationSensor = rotation(PORT18, true);
 
 // motors
 motor lfMotor = motor(PORT1, ratio6_1, false);
@@ -28,7 +29,7 @@ motor_group LeftDriveSmart = motor_group(lfMotor, lbMotor);
 motor_group RightDriveSmart = motor_group(rfMotor, rbMotor);
 
 // drivetrains
-drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 299.24, 294.89399999999995, 39.878, mm, 2);
+drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, DrivetrainInertial, 299.24, 294.89399999999995, 39.878, mm, 2);
 
 /////////////////////////////////
 //
@@ -41,5 +42,19 @@ drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 299.24, 294.
  * This should be called at the start of your int main function.
  */
 void vexcodeInit( void ) {
-  // nothing to initialize
+  Brain.Screen.print("Device initialization...");
+  Brain.Screen.setCursor(2, 1);
+  // calibrate the drivetrain Inertial
+  wait(200, msec);
+  DrivetrainInertial.calibrate();
+  Brain.Screen.print("Calibrating Inertial for Drivetrain");
+  // wait for the Inertial calibration process to finish
+  while (DrivetrainInertial.isCalibrating()) {
+    wait(25, msec);
+  }
+  // reset the screen now that the calibration is complete
+  Brain.Screen.clearScreen();
+  Brain.Screen.setCursor(1,1);
+  wait(50, msec);
+  Brain.Screen.clearScreen();
 }
