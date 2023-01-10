@@ -9,6 +9,8 @@ extern brain Brain;
 ////////////////////////////////////////////////
 
 // sensors
+extern inertial DrivetrainInertial;
+extern rotation RotationSensor;
 
 // motors
 extern motor lfMotor;
