@@ -25,7 +25,7 @@ extern motor_group RightDriveSmart;
 
 
 // drivetrain
-extern drivetrain Drivetrain;
+extern smartdrive Smartdrive;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
