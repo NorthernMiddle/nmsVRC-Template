@@ -29,8 +29,14 @@ motor rbMotor = motor(PORT20, ratio6_1, true);
 motor_group LeftDriveSmart = motor_group(lfMotor, lbMotor);
 motor_group RightDriveSmart = motor_group(rfMotor, rbMotor);
 
-// drivetrains
-drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, DrivetrainInertial, 299.24, 294.89399999999995, 39.878, mm, 2);
+// constant variables for drivetrain
+const double wheelTravel = 299.24;          // 3.25-in wheels
+const double trackWidth = 349.25;           // 13.75-inches
+const double wheelBase = 241.30;            // 9.5-inches
+const double externalGearRatio = 2.0;       // 72-tooth gear : 36-tooth gear
+
+// drivetrain
+smartdrive Smartdrive = smartdrive(LeftDriveSmart, RightDriveSmart, DrivetrainInertial, wheelTravel, trackWidth, wheelBase, distanceUnits::mm, externalGearRatio);
 
 /////////////////////////////////
 //
