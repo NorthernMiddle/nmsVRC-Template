@@ -3,7 +3,8 @@
   * this power setting is used for both tank and arcade drive
   *
   */
-void set_drive_pow(int l, int r) {
+void set_drive_pow(int l, int r) 
+{
   LeftFront.spin(fwd, l * SCALE, voltageUnits::mV);
   LeftBack.spin(fwd, l * SCALE, voltageUnits::mV);
   RightFront.spin(fwd, r * SCALE, voltageUnits::mV);
